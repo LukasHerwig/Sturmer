@@ -13,7 +13,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
