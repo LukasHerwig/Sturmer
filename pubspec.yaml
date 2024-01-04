@@ -38,6 +38,7 @@ dependencies:
   flutter_riverpod: ^2.4.5
   wolt_modal_sheet: ^0.2.0
   shared_preferences: ^2.2.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -84,8 +85,7 @@ flutter:
     #         style: italic
     - family: Germania One
       fonts:
-        - asset: fonts/GermaniaOne-Regular.ttf
-          weight: 400
+        - asset: assets/fonts/GermaniaOne-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
