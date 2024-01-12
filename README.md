@@ -1,6 +1,6 @@
 # stürmer
 
-A new Flutter project.
+A new Flutter project for the handball app.
 
 ## Getting Started
 
