@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:sturmer/core/api_service.dart";
 import "package:sturmer/core/navigation/drawer.dart";
 import "package:sturmer/theme/pallete.dart";
+
+var apiService = ApiService();
 
 class LeaguesScreen extends ConsumerWidget {
   const LeaguesScreen({super.key});
