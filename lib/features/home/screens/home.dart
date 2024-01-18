@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:sturmer/core/api_service.dart';
 import 'package:sturmer/core/navigation/drawer.dart';
@@ -169,7 +170,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 backgroundColor: currentTheme.backgroundColor,
                 title: Row(
                   children: [
-                    Text(leagues[index]),
+                    GestureDetector(
+                        onTap: () {
+                          String leagueName = leagues[index];
+                          int leagueId =
+                              apiService.leagueNameToId[leagueName] ?? -1;
+                          GoRouter.of(context).go(
+                              '/leagues/details/$leagueId/${leagues[index]}');
+                        },
+                        child: Text(leagues[index])),
                     const Spacer(),
                     Text(
                       '${leagueMatches.length}',
@@ -182,8 +191,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 children: leagueMatches
                     .map((match) => ListTile(
                           title:
-                              Text('${match.home.name} vs ${match.away.name}'),
-                          subtitle: Text('Time: ${match.time}'),
+                              Text('${match.home.name} - ${match.away.name}'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Time: ${match.time}',
+                              ),
+                              Text(
+                                match.scores.away != null &&
+                                        match.scores.home != null
+                                    ? 'Score: ${match.scores.home.toString()} - ${match.scores.away.toString()}'
+                                    : 'Score: Not played yet',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
                         ))
                     .toList(),
               ),

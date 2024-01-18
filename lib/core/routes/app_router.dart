@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sturmer/features/favorites/screens/favorites_screen.dart';
 import 'package:sturmer/features/home/screens/home.dart';
+import 'package:sturmer/features/leagues/screens/details.dart';
 import 'package:sturmer/features/leagues/screens/leagues.dart';
 import 'package:sturmer/features/main_layout/main_layout.dart';
 
@@ -41,6 +42,20 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                     return MaterialPage(
                       key: state.pageKey,
                       child: const LeaguesScreen(),
+                    );
+                  }),
+              GoRoute(
+                  name: 'leaguesDetails',
+                  path: '/leagues/details/:leagueId/:leagueName',
+                  pageBuilder: (context, state) {
+                    final leagueIdStr = state.pathParameters['leagueId'];
+                    final leagueName = state.pathParameters['leagueName'];
+
+                    final leagueId = int.tryParse(leagueIdStr ?? '0');
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: LeagueDetailsScreen(
+                          leagueId: leagueId, leagueName: leagueName),
                     );
                   })
             ],
