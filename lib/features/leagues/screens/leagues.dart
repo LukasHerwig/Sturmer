@@ -76,12 +76,14 @@ class AppBarExtension extends StatelessWidget {
     required this.width,
     required this.title,
     required this.height,
+    this.fontSize,
   });
 
   final ThemeData currentTheme;
   final double width;
   final double height;
   final String title;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +94,8 @@ class AppBarExtension extends StatelessWidget {
         child: Center(
             child: Text(
           title,
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: fontSize ?? 20,
             fontWeight: FontWeight.w500,
           ),
         )));

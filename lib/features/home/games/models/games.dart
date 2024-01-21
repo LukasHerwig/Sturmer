@@ -28,8 +28,6 @@ class Games {
       scores: Score.fromJson(json['scores']),
     );
   }
-
-  // Lägg till andra metoder och fält efter behov
 }
 
 class League {
