@@ -32,13 +32,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   late List<Games> matches = [];
   DateTime selectedDate = DateTime.now();
 
-  @override
-  void initState() {
-    super.initState();
-    dates = List.generate(15, (index) => today.add(Duration(days: index - 7)));
-    WidgetsBinding.instance.addPostFrameCallback((_) => scrollToToday());
-  }
-
   void scrollToToday() {
     final todayIndex = dates.indexWhere((date) =>
         date.day == today.day &&
@@ -47,6 +40,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final initialScrollOffset =
         todayIndex * 70.0 - (MediaQuery.of(context).size.width / 2 - 35.0);
     scrollController.jumpTo(initialScrollOffset);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    dates = List.generate(15, (index) => today.add(Duration(days: index - 7)));
+    WidgetsBinding.instance.addPostFrameCallback((_) => scrollToToday());
   }
 
   Future<void> onDateSelected(DateTime date) async {
@@ -147,7 +147,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'Handbollsligan Dam',
       'Allsvenskan Herr',
       'Allsvenskan Dam',
-      // Lägg till fler ligor om nödvändigt
+      // Lägg till fler ligor
     ];
 
     return ListView.builder(
@@ -175,7 +175,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           String leagueName = leagues[index];
                           int leagueId =
                               apiService.leagueNameToId[leagueName] ?? -1;
-                          GoRouter.of(context).go(
+                          GoRouter.of(context).push(
                               '/leagues/details/$leagueId/${leagues[index]}');
                         },
                         child: Text(leagues[index])),
