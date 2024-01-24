@@ -23,30 +23,30 @@ class LeagueDetailsScreen extends ConsumerWidget {
     final double itemWidth = size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Stürmer',
-                style: TextStyle(
-                    fontFamily: 'Germania One',
-                    fontSize: 30,
-                    fontStyle: FontStyle.italic),
-              ),
-              SizedBox(width: 10),
-              Icon(Icons.sports_handball_outlined),
-            ],
-          ),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Center(
+      //     child: Row(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Text(
+      //           'Stürmer',
+      //           style: TextStyle(
+      //               fontFamily: 'Germania One',
+      //               fontSize: 30,
+      //               fontStyle: FontStyle.italic),
+      //         ),
+      //         SizedBox(width: 10),
+      //         Icon(Icons.sports_handball_outlined),
+      //       ],
+      //     ),
+      //   ),
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back_ios_new),
+      //     onPressed: () {
+      //       GoRouter.of(context).pop();
+      //     },
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
