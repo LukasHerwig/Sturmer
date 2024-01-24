@@ -15,29 +15,33 @@ class ListDrawer extends ConsumerWidget {
     return Drawer(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       child: SafeArea(
-        child: Column(
-          children: [
-            ListTile(
-              title: const Text('Home'),
-              leading: const Icon(Icons.home),
-              onTap: () {},
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              child: Row(
-                children: [
-                  Text('Dark/Light Mode'),
-                  Spacer(),
-                  Switch.adaptive(
-                    value: ref.watch(themeNotifierProvider.notifier).mode ==
-                        ThemeMode.dark,
-                    onChanged: (val) => toggleTheme(ref),
-                  ),
-                ],
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.5,
+          transformAlignment: Alignment.topRight,
+          child: Column(
+            children: [
+              ListTile(
+                title: const Text('Home'),
+                leading: const Icon(Icons.home),
+                onTap: () {},
               ),
-            ),
-          ],
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                child: Row(
+                  children: [
+                    Text('Dark/Light Mode'),
+                    Spacer(),
+                    Switch.adaptive(
+                      value: ref.watch(themeNotifierProvider.notifier).mode ==
+                          ThemeMode.dark,
+                      onChanged: (val) => toggleTheme(ref),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
